@@ -1,0 +1,67 @@
+import random
+import copy
+
+class Barrel:
+    """makeing bag with barrel"""
+
+    def gen_barrel(self):
+        self.gen_barrel = [x for x in range(1, 90+1)]
+        random.shuffle(self.gen_barrel)
+        for i, y in enumerate(self.gen_barrel):
+            print('{:*^30}'.format('-'))
+            print('Новый бочонок: {} (осталось {})'.format(y, 90 - (i + 1)))
+
+
+
+class Card:
+
+    """making card for user"""
+    def gen_card_user(self):
+        self.gen_numbers = [x for x in range(1, 90+1)]
+        random.shuffle(self.gen_numbers)
+        card = copy.deepcopy([i for i in self.gen_numbers])
+        print('{0[0]:>2} {0[1]:<10} {0[2]:<5} {0[3]} {0[4]} '.format(card))
+        print('{0[44]:>4} {0[15]} {0[26]} {0[37]:<4} {0[42]} '.format(card))
+        print('{0[66]} {0[13]:<5} {0[51]:<5} {0[50]:<5} {0[46]} '.format(card))
+
+    """making card for computer"""
+    def gen_card_computer(self):
+        self.gen_numbers = [x for x in range(1, 90+1)]
+        random.shuffle(self.gen_numbers)
+        card = copy.deepcopy([i for i in self.gen_numbers])
+        print('{0[0]:>2} {0[1]:<10} {0[2]:<5} {0[3]} {0[4]} '.format(card))
+        print('{0[44]:>4} {0[15]} {0[26]} {0[37]:<4} {0[42]} '.format(card))
+        print('{0[66]} {0[13]:<5} {0[51]:<5} {0[50]:<5} {0[46]} '.format(card))
+
+class Player(Barrel, Card):
+
+    def gen_game(self):
+        while True:
+            inp_user = input('Зачеркнуть цифру? (y/n)')
+            if inp_user == 'y':
+                Barrel().gen_barrel()
+                Card().gen_card_user()
+
+
+b = Player()
+print(b.gen_barrel())
+print(b.gen_card_computer())
+print(b.gen_card_user())
+
+
+#gen_barrel = [x for x in range(1, 90+1)]
+#random.shuffle(gen_barrel)
+#card = [i for i in gen_barrel]
+#print('{0[0]:>2} {0[1]:<10} {0[2]:<5} {0[3]} {0[4]} '.format(card))
+#print('{0[44]:>4} {0[15]} {0[26]} {0[37]:<4} {0[42]} '.format(card))
+#print('{0[66]} {0[13]:<5} {0[51]:<5} {0[50]:<5} {0[46]} '.format(card))
+
+
+#random.shuffle(gen_barrel)
+#for i, y in enumerate(gen_barrel):
+#    print('{:-^30}'.format('-'))
+#    print('Новый бочонок: {} (осталось {})'.format(y, 90 - (i + 1)))
+#    for el in gen_barrel:
+#        print('{0[0]:>2} {0[1]:<10} {0[2]:<5} {0[3]} {0[4]} '.format(el[0]))
+#        print('{0[0]:>4} {0[1]:<6} {0[2]:<4} {0[3]:<4} {0[4]} '.format((el[1])))
+#        print('{0[0]} {0[1]:<5} {0[2]:<5} {0[3]:<5} {0[4]} '.format((el[2])))
